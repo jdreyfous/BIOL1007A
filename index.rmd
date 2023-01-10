@@ -1,7 +1,7 @@
 ---
 title: "BIOL1007A Web Page"
 author: "John Dreyfous"
-date: "1/10/2023"
+
 output:
   prettydoc::html_pretty:
     theme: cayman
