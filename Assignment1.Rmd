@@ -1,0 +1,36 @@
+---
+title: "Assignment #1"
+author: "John Dreyfous"
+date: "1/10/2023"
+output: html_document
+---
+
+## 1/10/23
+* Git and Github:
+* Git vs Github
+    * Git tracks files and Github stores them
+    * Github allows us to “clone” repository to our local computer
+* Version control: keep (and restore) past versions of files
+    * Initially meant for collaborating programmers
+    * Files GOOD for version control:
+        * Plain Text (.txt)
+        * R-script (.R)
+        * Markdown (.md/.rmd)
+            * Text formatting language (“markup” language)
+            * Separate from R, but we will be using it in R(studio)
+        * HTML (.html)
+        * LaTex
+    * BAD for version control
+        * PDF
+        * Video/Pics
+        * Word Doc
+* Commit (noun): snapshot of current file system
+* Commit (verb)L saving (recording) changes to local repository
+* We can change and commit files until we are ready to PUSH:
+    * “Pushing” transfers changes from local repo to Github
+* R-Project: divides work into multiple context
+    * Working directory
+    * Workspace
+    * History
+    * Source documents
+* When talking to git and GitHub ALWAYS in TERMINAL
