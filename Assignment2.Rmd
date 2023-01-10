@@ -1,0 +1,41 @@
+---
+title: "Assignment2"
+author: "John Dreyfous"
+date: "1/10/2023"
+output: html_document
+---
+
+![My Dog Watson](file:///Users/jakedreyfous/Desktop/IMG_1106.jpeg)
+
+Dogs>Cats  | Cats>Dogs | Dogs=Cats
+----------- | ------------- | -------------
+10^2^ | 0 | 0
+100 | 0 | 0
+100 | 0 | 0
+
+
+``**DOGS** are better than *cats* because they are cuter. Dogs like **people** more than cats, which makes them *better*.Dogs and cats breath O~2~ and Produce CO~2~.``
+
+
+### Types of Dogs
+1. Labrador Retriever  
+2.Great Pyrenees  
+3.Belgian Malinois 
+
+
+
+######### Types of Cats
+* House Cat: 
+  * They're all the same
+  
+
+
+
+
+[10 Reasons Why Dogs are Better than Cats](https://www.thesprucepets.com/reasons-dogs-are-better-than-cats-1118371#:~:text=In%20many%20people's%20opinion%2C%20dogs,other%20but%20still%20love%20both.)
+
+
+$Good = Dog - Cat$
+
+              
+  
