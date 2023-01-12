@@ -14,13 +14,13 @@ Dogs>Cats  | Cats>Dogs | Dogs=Cats
 100 | 0 | 0
 
 
-``**DOGS** are better than *cats* because they are cuter. Dogs like **people** more than cats, which makes them *better*.Dogs and cats breath O~2~ and Produce CO~2~.``
+ **DOGS** are better than *cats* because they are cuter. Dogs like **people** more than cats, which makes them *better*.Dogs and cats breath O~2~ and Produce CO~2~. 
 
 
 ### Types of Dogs
-1. Labrador Retriever  
-2.Great Pyrenees  
-3.Belgian Malinois 
+1. ` Labrador Retriever `  
+2.` Great Pyrenees `  
+3.` Belgian Malinois `
 
 
 
