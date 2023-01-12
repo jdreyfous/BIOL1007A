@@ -1,0 +1,78 @@
+---
+title: "Assignment3"
+author: "John Dreyfous"
+date: "1/12/2023"
+output: html_document
+---
+#### Question 1:
+1a
+```{r}
+x = 1.1
+a = 2.2
+b = 3.3
+z <- x^(a^b)
+print(z)
+```
+1b. 
+```{r}
+z<-(x^a)^b
+print(z)
+```
+1c.
+```{r}
+z <- 3*(x^3) + 2*(x^2) + 1
+print(z)
+```
+#### Question 2
+2a
+```{r}
+z = c(seq(from=1, to=8), seq(from=7, to=1))
+print(z)
+```
+2b
+```{r} 
+z <- c(rep(x=1, each=1), rep(x=2, each=2), rep(x=3, each=3), rep(x=4, each=4), rep(x=5, each=5))
+print(z)
+```
+2c
+```{r}
+z <- c(rep(x=1, each=5), rep(x=2, each=4), rep(x=3, each=3), rep(x=4, each=2), rep(x=5, each=1))
+print(rev(z))
+```
+#### Question 3
+
+3a
+```{r}
+queue <- c("sheep", "fox", "owl", "ant")
+queue <- c(queue, "serpent")
+print(queue)
+```
+3b. 
+```{r}
+queue <- c("sheep", "fox", "owl", "ant")
+queue <- c(queue, "serpent")
+queue <- queue[-1]
+print(queue)
+```
+3c
+```{r}
+queue <- c("sheep", "fox", "owl", "ant")
+queue <- c(queue, "serpent")
+queue <- queue[-1]
+queue <- c("donkey", queue)
+print(queue)
+```
+3d
+```{r}
+queue
+```
+3e 
+```{r}
+queue <- append(queue, "aphid", after=3)
+```
+3f
+z[which(z < 7.5)]
+```{r}
+aphid_loc <- which(queue== "aphid")
+print(aphid_loc)
+```
