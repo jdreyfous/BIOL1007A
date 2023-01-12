@@ -12,4 +12,6 @@ output:
 
 [Assignment 2](Assignment2.html)
 
+[assignment 3](Assignment3.html)
+
 [Website](https://www.coolmath4kids.com)
