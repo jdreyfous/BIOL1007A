@@ -15,9 +15,8 @@ output:
 [Assignment 3](Assignment3.html)
 
 ## Weekly Assignments
-[Weekly Assignment 1](Weekly_Assignment_1.html)
-
-
-
-### Website:
+[Weekly Assignment 1](Weekly_Assignment_1.html)         
+  
+  
+##### Website:
 [Website](https://www.coolmath4kids.com)
