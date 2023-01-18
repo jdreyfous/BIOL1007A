@@ -1,0 +1,55 @@
+---
+title: "Assignment4"
+author: "John Dreyfous"
+date: "1/17/2023"
+output: html_document
+---
+## Question 1
+##### Assign to the variable n_dims a single random integer between 3 and 10.
+```{r}
+n_dims<-sample(3:10, 1)
+print(n_dims)
+```
+
+#### Create a vector of consecutive integers from 1 to n_dims^2.
+```{r}
+vector <- 1:(n_dims)^2
+print(vector)
+```
+##### Use the sample function to randomly reshuffle these values.
+```{r}
+rearrange<-sample(vector)
+```
+#####create a square matrix with these elements.
+```{r}
+sMat<- matrix(data=rearrange, nrow=n_dims)
+print(sMat)
+```
+ #####  print out the matrix.^^^ 
+
+
+ #####  find a function in r to transpose the matrix.
+```{r}
+Tran_sMat <- t(sMat)
+print(Tran_sMat)
+```
+
+  ##### print it out again and note how it has changed.
+
+ ##### calculate the sum and the mean of the elements in the first row and then the last row.
+```{r}
+sumFirst<-sum(Tran_sMat[1,])
+meanFirst<-mean(Tran_sMat[1,])
+sumLast<-sum(Tran_sMat[n_dims,])
+meanLast<-mean(Tran_sMat[n_dims,])
+print(sumFirst)
+print(meanFirst)
+print(sumLast)
+print(meanLast)
+```
+ 
+
+ ##### set your code up so you can re-run it to create a matrix of a different size by only changing the n_dims value
+
+
+

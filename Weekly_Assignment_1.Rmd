@@ -1,0 +1,106 @@
+---
+title:          Getting Started with GitHub and Rstudio on Mac OSX
+author: "John Dreyfous"
+date: "1/16/2023"
+output: html_document
+---
+# Part One: Download and Install
+
+
+
+#### **If you have not already downloaded R and Rstudio, do so before proceeding**
+
+1. Download git [here](https://git-scm.com/download/mac) 
+2. Before downloading git, we first have to install `Homebrew`  
+   a. Copy and paste this code into your Terminal: ` /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" `
+   b. You can also access the code from Homebrew's [website](https://brew.sh/)
+3. Next, copy and paste this code into Terminal: ` brew install git `
+4. Once downloaded, restart Rstudio
+  
+**NOTE**: If you were unable to download `git` successfully, you may need to download **Command Line Tools for Xcode 14.2**. The latest available version can be found [here](https://developer.apple.com/download/all/?q=)
+
+**For a step by step video of the process, click [here](https://www.youtube.com/watch?v=RLTCN0A29Ts)**
+  
+
+# Part Two: Connect to GitHub
+
+### Generating a Personal Access Token (PAT)
+#### **If you have not already, create an account on GitHub [here](https://github.com/)**
+
+1. Go to **Settings**
+2. On the left hand column, click on **Developer Settings**
+3. Click Personal access tokens -> Select Tokens (classic)
+4. Click on **Generate new token** making sure to choose the **Classic option**
+    a. Write anything short and relevant to your project
+    b. Set expiration to a date suitable for your project  
+5. Click **repo check box** to select all the sub-boxes
+6. Select **Generate token**
+7. Copy and save PAT. This is the **ONLY** time you can access the token.
+
+### Connecting Token to Rstudio
+
+1. Install the credentials package by typing this code in your Rstudio console: ` install.packages("credentials") `
+2. Run the code below in your Rstudio Terminal:  
+` git config --global user.email "GITHUB EMAIL HERE" `  
+` git config --global user.name "YOUR NAME HERE" `  
+` credentials::set_github_pat("YOUR PAT HERE") `  
+
+    
+# Part Three: Create and Link a Repository
+
+### Creating a Repository in GitHub
+
+1. Navigate to your GitHub homepage and click on **Your Profile**
+    a. Click on **Repositories** 
+2. Click the green **New** button
+    a. Name your project
+    b. Select **Public**
+  c. Select **Add a README file**
+    d. License Type: **MIT**
+3. Click **Create repository**
+
+## Linking to GitHub
+
+1. Locate the repository on your GitHub account
+2. Click on the **Code** button (in the upper right corner), and copy the **HTTPS** link
+3. Navigate back to Rstudio and click the box in the upper-right corner and select **New Project**
+    a. Click on **Version Control** 
+    b. Select **Git**
+    c. In **Repository Url** paste the **link** copied in Step 2 
+    d. In Project Directory Name: copy the EXACT name of the **repository**
+4. Click **Create Project**
+  
+  **NOTE**: If the Project directory name and repository name do not match exactly, it will not link properly with GitHub
+  
+
+
+
+# Part Four: Build and Publish your Web Page
+
+## Rmarkdown and Commiting your Changes
+1. Click the icon in the upper left corner (the green plus)
+    a. Click on *R Markdown* 
+    b. Select *HTML*
+    c. Save this R Markdown as *index.Rmd*
+2. Click *Knit* (the yarn icon) to knit your project to an HTML (a web page!)
+3. Now we have to commit and send the web page to GitHub by pasting `git status` into the * Rstudio Terminal*
+    * This tell us the files that need to be updated on GitHub
+4. Next you can copy the following code: 
+   a. `git add -A`
+   b. `git commit -am "short note here"`
+   c. `git push`
+
+## Publish Your Web Page
+1. Navigate to the repository you made earlier
+2. Click on **Settings**
+    a. On the left side click on **Pages*
+    b. Scroll to **Branch** and change the branch from none to **main**
+3. Click Save
+
+**NOTE**: It can take several minutes for your web page to publish and update
+
+If you've made it this far, you have succesfully create a web page using GitHub and Rstudio!
+
+
+    
+

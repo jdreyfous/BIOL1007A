@@ -44,7 +44,7 @@ print(rev(z))
 3a
 ```{r}
 queue <- c("sheep", "fox", "owl", "ant")
-queue <- c(queue, "serpent")
+queue <- c(queue, "serpent") ##queuu[5]<-"serpent" can use [] even when values does not exist yet
 print(queue)
 ```
 3b. 
