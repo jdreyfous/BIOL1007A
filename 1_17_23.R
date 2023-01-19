@@ -199,3 +199,53 @@ m[3,4] <- NA
 complete.cases(m) # gives logical output (T/F) as to whether WHOLE row is complete
 m[complete.cases(m),] # Isolates Rows WIHTOUT NAs
 m[complete.cases(m[,c(1:2)]),]
+
+### MATRICES AND DATAFRAMES CONTINUED (1/19)
+
+m <- matrix(data=1:12, nrow=3)
+
+##Subsetting based on elements
+
+##EXAMPLE:
+
+m[1:2, ] ## Specified rows all columns
+m[, 1:2] ## Specificed columns all rows
+
+#### SUBsetting with logical statements
+
+## EXAMPLE
+
+colSums(m) # sums columns
+colSums(m) > 15 #Can make it conditional
+m[, colSums(m) > 15] ## selects columns whose sum are greater than 15
+m[rowSums(m) == 22,] ## Must use "==" for logical operations
+m[rowSums(m) != 22,] ## "!=" means NOT equal to
+
+### LOCIAL OPERATORS: == != > <
+
+## Subsetting to a vector CHANGES data type
+
+z <- m[1,]
+str(z)
+
+z2 <- m[1, ,drop=FALSE] ## drop=FALSE allows you to subset while maintaining Matrix (instead of changing to a vector)
+
+## Example
+
+m2 <- matrix(data = runif(9), nrow=3)
+m2[3,2]
+
+m2[m2 > 0.6] <- NA ## Use assignment operator to substitute values
+
+Subsetting in DATA FRAMES
+data <- iris
+head(data) ## FIrst 6 rows of dataset
+tail(data) ## last Six rows of dataaset
+
+data[3,2] ## Numbered indices still work
+
+dataSub <- data[, c("Species", "Petal.Length")]
+str(dataSub)
+
+orderIris <- iris[order(iris$Petal.Length),]  # Sort a data frame by VALUES
+head(orderIris)
