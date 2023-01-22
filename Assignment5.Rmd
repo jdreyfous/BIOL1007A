@@ -1,0 +1,90 @@
+---
+title: "Assignment5"
+author: "John Dreyfous"
+date: "1/19/2023"
+output: html_document
+---
+## Question 2
+
+a. 
+```{r}
+my_matrix <- matrix(data= runif(16), nrow=4)
+print(my_matrix)
+```
+b. 
+```{r}
+my_logical <- runif(100) > 0.5
+print(my_logical)
+```
+c. 
+```{r}
+my_letters <- sample(letters)
+print(my_letters)
+```
+d. create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of
+```{r}
+list1 <- list(my_matrix[2,2], my_logical[2], my_letters[2])
+print(list1)
+```
+e. 
+```{r}
+print(typeof(list1))
+print(str(list1))
+```
+f. combine the underlying elements from the new list into a single atomic vector with the c() function.
+what is the data type of this vector?
+```{r}
+list2<-c(my_matrix[2,2], my_logical[2], my_letters[2])
+typeof(list2)
+print(typeof(list2))
+```
+
+## Question 3: Create an empty data frame with two variables (= columns) and 26 observations (= rows) below:
+```{r}
+VarA <- 1:26
+VarB <- 1:26
+dFram <- data.frame(VarA, VarB, stringsAsFactors = F)
+dFram[dFram>0] <- NA
+print(dFram)
+```
+
+
+a/b. call the first column/variable my_unifs and fill it with 26 random uniform values from 0 to 10
+
+```{r}
+my_unifs <- runif(26, 0, 10)
+my_letters <- sample(LETTERS)
+dFram <- data.frame(my_unifs, my_letters, stringsAsFactors = F)
+print(dFram)
+```
+c. 
+```{r}
+my_unifs <- runif(26, 0, 10)
+my_letters <- sample(LETTERS)
+dFram <- data.frame(my_unifs, my_letters, stringsAsFactors = F)
+dFram[sample(nrow(dFram), 4),1] <- NA
+print(dFram)
+```
+d. 
+```{r}
+which(is.na(dFram[,1]))
+print(which(is.na(dFram[,1])))
+```
+e. 
+```{r}
+orderFram <- dFram[order(dFram$my_letters),] 
+print(orderFram)
+```
+f. 
+```{r}
+dFram <- data.frame(my_unifs, my_letters, stringsAsFactors = F)
+mean(dFram[ , 1])
+print(mean(dFram[ , 1]))
+```
+g. 
+```{r}
+my_LETTERS <- sample(LETTERS)
+dFram <- data.frame(my_unifs, my_LETTERS, stringsAsFactors = F)
+print(dFram)
+```
+
