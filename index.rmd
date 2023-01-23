@@ -28,7 +28,9 @@ My name is Jake Dreyfous and I was born and raised in Salt Lake City, UT. Growin
 
 [Assignment 4](Assignment4.html)
 
-[Assignment 5](Assignment5.html)
+[Assignment 5](Assignment5.html)  
+
+[Assignment 6](Assignment6.html)
 
 ### Weekly Assignments
 [Weekly Assignment 1](Weekly_Assignment_1.html)  
