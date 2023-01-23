@@ -17,22 +17,29 @@ Q1<-function(Type=NULL, Value=NULL){
   dataFrame[26:50,2] <- rnorm(n=25, mean=45, sd=2)
   return(dataFrame)
 }
-dFrame<-dataFrame
-print(dFrame)
+newFram<-Q1()
 ```
 ### QUESTION 2
 ```{r}
-dataHead<-head(dFrame)
+dataHead<-head(newFram)
 print(dataHead)
 ```
 ### QUESTION 3
 ```{r}
-Anova<- aov(Value~Type, data = dFrame, projections = T, qr = T, contrasts = NULL)
+Anova<- aov(Value~Type, data = newFram, projections = T, qr = T, contrasts = NULL)
 print(Anova)
 summary(Anova)
 ```
 ### Question 4
 
 ```{r}
-aFrame<-data.frame(X=NULL,Y=NULL,stringsAsFactors = F)
+fAnova<-function(fFrame = newFram){
+  yVar <- fFrame[[1]]
+  xVar <- fFrame[[2]]
+  aovTest <- aov(yVar ~ xVar, fFrame)
+  pValue <- summary(aovTest)[[1]][["Pr(>F)"]][1]
+  return(pValue)
+}
+fAnova(iris)
+
 ```

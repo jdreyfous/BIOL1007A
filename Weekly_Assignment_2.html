@@ -170,73 +170,62 @@ pre code {
 
 <div id="question-1" class="section level2">
 <h2>QUESTION 1:</h2>
-<pre class="r"><code>Type &lt;- 1:50
-Value &lt;- 1:50
-dFram &lt;- data.frame(Type, Value, stringsAsFactors = F)
-dFram[1:25,1] &lt;- &quot;Control&quot;
-dFram[26:50, 1] &lt;- &quot;Treatment&quot;
-dFram[1:25,2] &lt;- rnorm(n=25, mean=10, sd=1.5)
-dFram[26:50,2] &lt;- rnorm(n=25, mean=45, sd=2)
-print(dFram)</code></pre>
-<pre><code>##         Type     Value
-## 1    Control  9.110133
-## 2    Control 11.786796
-## 3    Control  8.523528
-## 4    Control 10.596985
-## 5    Control  9.973878
-## 6    Control 10.394297
-## 7    Control  9.650456
-## 8    Control  8.266166
-## 9    Control 10.215024
-## 10   Control 10.695150
-## 11   Control  8.872660
-## 12   Control 12.249572
-## 13   Control  9.381306
-## 14   Control  9.689231
-## 15   Control  6.024151
-## 16   Control  8.945696
-## 17   Control  9.985719
-## 18   Control 11.807278
-## 19   Control 10.072905
-## 20   Control  8.633101
-## 21   Control 10.542331
-## 22   Control 12.385488
-## 23   Control 11.010725
-## 24   Control 14.689660
-## 25   Control 10.656203
-## 26 Treatment 43.303940
-## 27 Treatment 48.771828
-## 28 Treatment 45.455453
-## 29 Treatment 47.828798
-## 30 Treatment 45.230482
-## 31 Treatment 46.737134
-## 32 Treatment 43.292137
-## 33 Treatment 45.092213
-## 34 Treatment 45.623477
-## 35 Treatment 44.661967
-## 36 Treatment 44.894389
-## 37 Treatment 42.500120
-## 38 Treatment 46.563245
-## 39 Treatment 45.334145
-## 40 Treatment 46.810423
-## 41 Treatment 46.462527
-## 42 Treatment 46.449211
-## 43 Treatment 42.472695
-## 44 Treatment 43.848357
-## 45 Treatment 47.030277
-## 46 Treatment 46.769133
-## 47 Treatment 44.401760
-## 48 Treatment 48.436450
-## 49 Treatment 44.997423
-## 50 Treatment 44.281205</code></pre>
-<div id="section" class="section level22">
-<p class="heading"></p>
 <pre class="r"><code>Q1&lt;-function(Type=NULL, Value=NULL){
-  dataFrame&lt;-data.frame(Type, Value, stringsAsFactors = F)
-    
-return(dataFrame)
-}</code></pre>
-<p>Q1()</p>
+  Type &lt;- 1:50
+  Value &lt;- 1:50
+  dataFrame &lt;- data.frame(Type, Value, stringsAsFactors = F)
+  dataFrame[1:25,1] &lt;- &quot;Control&quot;
+  dataFrame[26:50, 1] &lt;- &quot;Treatment&quot;
+  dataFrame[1:25,2] &lt;- rnorm(n=25, mean=10, sd=1.5)
+  dataFrame[26:50,2] &lt;- rnorm(n=25, mean=45, sd=2)
+  return(dataFrame)
+}
+newFram&lt;-Q1()</code></pre>
+<div id="question-2" class="section level3">
+<h3>QUESTION 2</h3>
+<pre class="r"><code>dataHead&lt;-head(newFram)
+print(dataHead)</code></pre>
+<pre><code>##      Type     Value
+## 1 Control 11.021265
+## 2 Control 13.507658
+## 3 Control 10.767527
+## 4 Control  7.390638
+## 5 Control  8.252330
+## 6 Control  8.020475</code></pre>
+</div>
+<div id="question-3" class="section level3">
+<h3>QUESTION 3</h3>
+<pre class="r"><code>Anova&lt;- aov(Value~Type, data = newFram, projections = T, qr = T, contrasts = NULL)
+print(Anova)</code></pre>
+<pre><code>## Call:
+##    aov(formula = Value ~ Type, data = newFram, projections = T, 
+##     qr = T, contrasts = NULL)
+## 
+## Terms:
+##                      Type Residuals
+## Sum of Squares  14974.330   160.958
+## Deg. of Freedom         1        48
+## 
+## Residual standard error: 1.8312
+## Estimated effects may be unbalanced</code></pre>
+<pre class="r"><code>summary(Anova)</code></pre>
+<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Type         1  14974   14974    4466 &lt;2e-16 ***
+## Residuals   48    161       3                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div id="question-4" class="section level3">
+<h3>Question 4</h3>
+<pre class="r"><code>fAnova&lt;-function(fFrame = newFram){
+  yVar &lt;- fFrame[[1]]
+  xVar &lt;- fFrame[[2]]
+  aovTest &lt;- aov(yVar ~ xVar, fFrame)
+  pValue &lt;- summary(aovTest)[[1]][[&quot;Pr(&gt;F)&quot;]][1]
+  return(pValue)
+}
+fAnova(iris)</code></pre>
+<pre><code>## [1] 0.1518983</code></pre>
 </div>
 </div>
 
