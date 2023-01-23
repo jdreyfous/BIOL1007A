@@ -7,7 +7,19 @@ output:
     theme: cayman
     highlight: github
 ---
-## Daily Assignments
+## About this Page: 
+
+This page is a complete portfolio of assignments completed in BIOLO1007, a class aimed to teach students about using Rstudio, git, and GitHub in order to conduct reproducible biological research.  
+
+### About the Author: 
+My name is Jake Dreyfous and I was born and raised in Salt Lake City, UT. Growing up in Utah, I have had the privilege of exploring incredible landscapes throughout the West (like the picture below), which helped harbor my interest in fly-fishing, skiing, camping, hiking. These places and activities also shaped my choice to study Conservation Biology and pursue a career in the life sciences. 
+
+
+  ![Zion National Park, Fall 2020](file:///Users/jakedreyfous/Desktop/IMG_5184.jpg)
+
+
+
+### Daily Assignments
 [Assignment 1](Assignment1.html)
 
 [Assignment 2](Assignment2.html)
@@ -18,12 +30,13 @@ output:
 
 [Assignment 5](Assignment5.html)
 
-## Weekly Assignments
+### Weekly Assignments
 [Weekly Assignment 1](Weekly_Assignment_1.html)         
   
   
-##### Website:
-[Website](https://www.coolmath4kids.com)
+
+#### Website:
+[Learn About the Dire State of the Great Salt Lake](https://www.saveourgreatsaltlake.org/)
 
 
 

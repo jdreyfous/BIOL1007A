@@ -237,7 +237,7 @@ m2[3,2]
 
 m2[m2 > 0.6] <- NA ## Use assignment operator to substitute values
 
-Subsetting in DATA FRAMES
+### Subsetting in DATA FRAMES
 data <- iris
 head(data) ## FIrst 6 rows of dataset
 tail(data) ## last Six rows of dataaset

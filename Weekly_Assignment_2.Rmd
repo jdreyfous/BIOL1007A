@@ -1,0 +1,38 @@
+---
+title: "Weekly Assignment 2"
+author: "John Dreyfous"
+date: "1/22/2023"
+output: html_document
+---
+## QUESTION 1:
+
+```{r}
+Q1<-function(Type=NULL, Value=NULL){
+  Type <- 1:50
+  Value <- 1:50
+  dataFrame <- data.frame(Type, Value, stringsAsFactors = F)
+  dataFrame[1:25,1] <- "Control"
+  dataFrame[26:50, 1] <- "Treatment"
+  dataFrame[1:25,2] <- rnorm(n=25, mean=10, sd=1.5)
+  dataFrame[26:50,2] <- rnorm(n=25, mean=45, sd=2)
+  return(dataFrame)
+}
+dFrame<-dataFrame
+print(dFrame)
+```
+### QUESTION 2
+```{r}
+dataHead<-head(dFrame)
+print(dataHead)
+```
+### QUESTION 3
+```{r}
+Anova<- aov(Value~Type, data = dFrame, projections = T, qr = T, contrasts = NULL)
+print(Anova)
+summary(Anova)
+```
+### Question 4
+
+```{r}
+aFrame<-data.frame(X=NULL,Y=NULL,stringsAsFactors = F)
+```

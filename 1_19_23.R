@@ -67,3 +67,4 @@ fitLine2()
 
 myPars<- list(x=1:10, y=runif(10))
 fitLine2(p=myPars)
+print(fitLine2(p=myPars)
