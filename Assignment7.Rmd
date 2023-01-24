@@ -1,0 +1,76 @@
+---
+title: "Assignment 7"
+author: "John Dreyfous"
+date: "1/24/2023"
+output: html_document
+---
+
+### 1. Using the built-in starwars data set in the dplyr package, create a new tibble with the following modifications:
+
+######It only includes the species that have more than 1 individual represented in the data set. (hint: first use dplyr to summarize the number of individuals per species in the data frame; then create a vector/tibble of those names; subset the species that are included in that vector)
+
+#####It only includes the columns that are not of type list (hint: use glimpse to check)
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+
+data(starwars)
+glimpse(starwars)
+
+SpeciesMore<- starwars %>%
+  group_by(species) %>%
+  summarize(TotalNumber=n()) %>%
+  filter(TotalNumber>1)
+
+noLists<-filter(starwars, species %in% SpeciesMore$species) %>% 
+  select(-(films:starships))
+glimpse(noLists)
+```
+
+
+### 2.Clean your data set: only include observations/rows that do not have an NA in the height column. Then, use dplyr to print a summary table showing the mean, median, and standard deviation of height for each species.
+```{r}
+final<- noLists[complete.cases(noLists[,2]), ]
+Averages<-final %>%
+  group_by(species) %>% 
+  summarize(meanHeight=mean(height, na.rm=TRUE), medianHeight= median(height, na.rm=T), sdHeight=sd(height, na.rm=T))
+            
+          
+print(Averages)
+```
+
+
+###3. Create a box plot figure that shows the variation in heights among Star Wars species. Do the values in your summary table line up with the plot? Code so that each box plot (Species) is be filled with a different color. Change your axes labels so that species is capitalized and height is capitalized and shows units (cm). Use the theme_minimal option. Then look into the annotate or geom_text functions and add the text “p=1.2E-0.5” to the top right corner.
+```{r}
+plot<-ggplot(data=final, aes(x=species, y=height, fill=species)) +
+  geom_boxplot()+
+ xlab("Species") +
+  ylab("Height (cm)")+ geom_text(x=8.5, y=230, label="p=1.2E-0.5") +
+  theme_minimal()
+  plot
+```
+
+
+### 4. Using the same or a different built-in data set, create at least one additional (and different kind of) plot. Experiment with different arguments, features, and colors.
+
+```{r}
+scat<-ggplot(data=final, mapping=aes(x=height, y=mass,)) +
+  geom_point(size=8, shape=42, color="black", fill="cyan")+
+ xlab("Mass (kg)") +
+  ylab("Height (cm)") + geom_smooth(method="lm", se=F)
+scat
+```
+
+
+
+### 5. Finally, create a multi-panel figure with the graphs you created.
+
+```{r}
+scat/plot
+Multi<- plot/scat
+Multi
+```
+
