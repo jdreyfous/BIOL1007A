@@ -1,0 +1,14 @@
+---
+title: "Weekly Assignment 3"
+author: "John Dreyfous"
+date: "1/29/2023"
+output: html_document
+---
+
+### Question 1: Go to Dryad to choose a published paper and data set and reconstruct your own figure. Code a ggplot graph that looks as close to the published figure as you can.
+
+![Model Figure](file:///Users/jakedreyfous/Desktop/Screen%20Shot%202023-01-29%20at%203.05.16%20PM.png)
+
+
+
+
