@@ -9,7 +9,7 @@ output: html_document
 
 #### Model Figure and Citation
 ![Fig 11. Effect of migration date on acute DD20 accumulation.
-Relationships between release date and the accumulation of acute temperature exposure measured in degree days ≥20 °C (DD20) for individual fall Chinook salmon (n = 21, blue symbols) and steelhead (n = 75, gold symbols) during their ~470 rkm migration from release to Lower Granite Dam in 2000 and 2002.   ](https://raw.githubusercontent.com/jdreyfous/BIOL1007A/main/Screen%20Shot%202023-01-29%20at%203.05.16%20PM.png)
+Relationships between release date and the accumulation of acute temperature exposure measured in degree days ≥20 °C (DD20) for individual fall Chinook salmon (n = 21, blue symbols) and steelhead (n = 75, gold symbols) during their ~470 rkm migration from release to Lower Granite Dam in 2000 and 2002.   ](https://raw.githubusercontent.com/jdreyfous/BIOL1007A/main/Figure_For_WA3.png)
 
 **Data Citation:** Keefer, Matthew L. et al. (2019), Data from: Thermal exposure of adult Chinook salmon and steelhead: diverse behavioral strategies in a large and warming river system, Dryad, Dataset, https://doi.org/10.5061/dryad.gc632bc
 
@@ -39,21 +39,25 @@ bySpecies<- fishData %>%
   group_by(SPP) %>% 
   summarize(DDT20, julian, TotalNumber=n())%>% 
   filter(DDT20>=0)
-  View(bySpecies)
-  SteelFa<-filter(bySpecies, TotalNumber>199 | TotalNumber<29, julian>151)
-  View(SteelFa)
+  SteelFa<-filter(bySpecies, TotalNumber>199 | TotalNumber<29 & julian>151)
 p<-ggplot(data = SteelFa, mapping=aes(x = julian, y= DDT20, color=SPP, na.rm=T))+
   geom_point(size=2.5, show.legend = F)+
   xlab("Relase Date")+
   ylab("Degree days >20C")+ 
   ylim(1,25)+
   scale_y_continuous(breaks=c(0, 5, 10, 15, 20, 25, 30))+
-  scale_color_manual(values=c("ASH"="darkolivegreen4", "FA"="blue"))+
+  scale_color_manual(values=c("ASH"="darkolivegreen4", "FA"="blue")) + 
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 panel.background = element_blank(), axis.line = element_line(colour = "black"))
  p
 ```
 
+### QUESTION 2: Perform a simple analysis (linear regression, ANOVA, t-test, chi-squared, or logistic regression) using two variables from the data set. Print the analysis’ summary table.
+
+```{r}
+Anova<- aov(DDT20~julian, data = SteelFa, projections = T, qr = T, contrasts = NULL)
+summary(Anova)
+```
 
 
 
