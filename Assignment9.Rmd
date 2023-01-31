@@ -1,0 +1,78 @@
+---
+title: "Assignment9"
+author: "John Dreyfous"
+date: "1/30/2023"
+output: html_document
+---
+
+##### 1.Using a for loop and an if statement, write a function to calculate the number of zeroes in a numeric vector. Before entering the loop, set up a vector of integers with some zero values. Then, set up a counter variable counter <- 0. Inside the loop, add 1 to counter each time you have a zero in the vector. Finally, use return(counter) for the output.
+
+```{r}
+ Vec<-sample(rep(0:1, times=4))
+z<-0
+newVec<- function(vector){for(i in 1:length(Vec)){
+  if(Vec[i]==0){z<-z+1}
+}
+return(z)
+}
+newVec(Vec)
+```
+
+
+##### 2. Write a function that takes as input two integers representing the number of rows and columns in a matrix. The output is a matrix of these dimensions in which each element is the product of the row number x the column number.
+```{r}
+m<- function(rows, columns){
+  mat<- matrix(data=NA, nrow=rows, ncol = columns) 
+  for(i in 1:rows){
+  for(j in 1:columns){
+    mat[i,j]<- (i*j)
+  }
+  }
+  return(mat)
+    }
+m(rows=6, columns=4)
+```
+
+
+##### 3. Use a for loop to repeat your previous functions from Weekly Assignment 2 (which simulate a data frame and extract a p-value) 100 times. Store the results in a data frame that has 1 column indicating the replicate number and 1 column for the p-values (a total of 2 columns and 100 rows).
+
+
+```{r}
+### Replicate data frame
+Q1<-function(Type=NULL, Value=NULL){
+  Type <- 1:50
+  Value <- 1:50
+  dataFrame <- data.frame(Type, Value, stringsAsFactors = F)
+  dataFrame[1:25,1] <- "Control"
+  dataFrame[26:50, 1] <- "Treatment"
+  dataFrame[1:25,2] <- rnorm(n=25, mean=10, sd=1.5)
+  dataFrame[26:50,2] <- rnorm(n=25, mean=45, sd=2)
+  return(dataFrame)
+}
+daFrame<-Q1()
+
+### Return p-value
+pvalF <- function(d = NULL){
+  table = summary(aov(d[[2]] ~ d[[1]], data = d))
+  p <- table[[1]][["Pr(>F)"]][[1]]
+  return(p)
+}
+```
+```{r}
+### Create Pval function using for loop
+
+repPval <- function(replicates=1:100, rows = NULL){
+  replicates<-1:100
+  rows<-1:100
+  finalFrame <- data.frame(replicates=1:100, y=rows)
+  colnames(finalFrame) <- c("p-values", "replicates")
+  for(i in rows){
+   finalFrame[i,] <- pvalF(Q1())
+  }
+  finalFrame[1:100, 2]<- 1:100
+  return(finalFrame)
+}
+repPval()
+```
+
+

@@ -27,7 +27,6 @@ print(dataHead)
 ### QUESTION 3
 ```{r}
 Anova<- aov(Value~Type, data = newFram, projections = T, qr = T, contrasts = NULL)
-print(Anova)
 summary(Anova)
 ```
 ### Question 4
