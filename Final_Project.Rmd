@@ -1,0 +1,97 @@
+---
+title: "Intro to Mapping with GGPLOT and Rstudio"
+author: "John Dreyfous"
+date: "1/31/2023"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+<style type="text/css">
+  body{
+  font-size: 14pt;
+}
+</style>
+
+### In this tutorial, I will create a map visualizing the 2021 Annual Global GDP by Country  using `ggplot`. Maps are a powerful way of visualizing and interpretting data. With a personal interst in GIS, this method of mapping seemed like an intersting alternive to learn in place of qGIS or ARC. 
+## Step One: Install Packages and Download Data
+
+
+```{r}
+#install.packages("ggplot2")   #only do this once
+#install.packages("tidyverse") #only do this once
+```
+To check if you have already installed these packages: `find.package(<package.name>)`
+```{r}
+library(ggplot2) # Load library with each session
+library(tidyverse) # Load library with each session
+
+worldGDP<- read.csv("GlobalGDP3.csv")
+mapData<-map_data("world")
+
+
+
+#View(mapData) 
+#View(worldGDP) 
+```
+This GDP data was acquired from [The World Bank](https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?view=chart). The World Bank has a large variety of easily accseible `.csv` data sets, which can be uplaoded and used in Rstudio.  
+  
+  
+**map_data("world")**: data set that provides (Longitude, Latitude) for the borders of every country of the world. This data set also includes sub regions, such as the states in the USA.  
+  
+ 
+In Excel, I removed unnecessary columns before uploading to Rstudio, so the uploaded `.csv` contained only **Country Name** and **GDP**
+## Step Two: Clean Your Data
+
+
+```{r}
+colnames(worldGDP)[1] ="region" 
+
+mapData<-left_join(mapData, worldGDP, by = "region") # Function works simiarly to group_by and joins GDP into mapData by region (ie. country name)
+```
+
+Column names in `mapData` and `worldGDP` must match **EXACTLY** in order for information to be grouped together correctly. Rows names must also match **EXACTLY**. If GDP information data does not populate a country when mapped, double check that the column: 'region' names are the same.  
+  
+  
+Step Three: Make and Customize Your Map
+```{r}
+map1<-ggplot(mapData, mapping=aes(x= long, y=lat, group=group)) + geom_polygon(aes(fill= GDP), color="black") 
+```
+
+`map1` creates a basic map visualizing the 2021 Annual GDP by country. It uses a default color gradient and fills the **borders** of countries with color="black"  
+
+```{r}
+# install.packages("viridis") 
+# install.packages("RColorBrewer") # only have to do this once
+library(viridis)
+library(RColorBrewer)
+```
+ `viridis` and `RColorBrewer` are packages of pallets to help visualzie data. `Viridis` contains a handful of gradient color pallets, while `RColorBrewer` is the pre-installed set of color palettes for use in data visualization.  
+   
+ Once you have loaded your library with the necessary color palettes, `scale_fill_viridis()` allows you to select a color spectrum.  
+ 
+ 
+Feel free to experiment with the color spectrum that best suits your data set
+
+
+```{r}
+map2 <- map1 + scale_fill_viridis(name="Annual GDP (billions)", option="plasma")+
+  theme(axis.text.x = element_blank(), # removes X-axis text
+        axis.text.y = element_blank(), # removes y-axis text
+        axis.ticks = element_blank(), # removes x-axis grid line
+        axis.title.y=element_blank(), # removes y-axis title
+        axis.title.x=element_blank(), # removes x-axis title
+        rect = element_blank())
+map2 
+```
+
+
+
+To view all available schemes in **RColorBrewer**: `display.brewer.all()`  
+
+**Color Blind Friendly**: `display.brewer.all(colorblindFriendly=TRUE)`  
+
+**Sequential Gradients**: `display.brewer.all(type="seq")`  
+
+If you have made it this far, you have successfully replicated a map using `ggplot`.
+
+This is one of many tools available to map in Rstudio. To use Google Maps generated maps, you can use `ggmaps()`. Alternatively, maps can be downloaded for use in Rstudio from [OpenStreetMap](https://www.openstreetmap.org/#map=4/38.01/-95.84). 
