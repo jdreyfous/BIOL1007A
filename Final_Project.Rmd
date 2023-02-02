@@ -98,4 +98,10 @@ To view all available schemes in **RColorBrewer**: `display.brewer.all()`
 
 If you have made it this far, you have successfully replicated a map using `ggplot`.
 
-This is one of many tools available to map in Rstudio. To use Google Maps generated maps, you can use `ggmaps()`. Alternatively, maps can be downloaded for use in Rstudio from [OpenStreetMap](https://www.openstreetmap.org/#map=4/38.01/-95.84). 
+This is one of many tools available to map in Rstudio. To use Google Maps generated maps, you can use `ggmaps()`. Alternatively, maps can be downloaded for use in Rstudio from [OpenStreetMap](https://www.openstreetmap.org/#map=4/38.01/-95.84).  
+
+### Video Tutorial:
+For an in depth video tutorial of the methods described above click: [HERE](https://lvash.github.io/BIOL1007A/Final-Assignment-Guidelines.html)  
+  
+    
+    
