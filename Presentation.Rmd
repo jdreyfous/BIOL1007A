@@ -1,0 +1,47 @@
+---
+title: "Presentation"
+author: "John Dreyfous"
+date: "2/2/2023"
+output: html_document
+---
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+```{r}
+worldGDP<-read.csv("GlobalGDP3.csv")
+mapData<-map_data("world")
+#view(mapData)
+#view(worldGDP)
+```
+
+```{r}
+colnames(worldGDP)[1]<-"region"
+
+mapData<-left_join(mapData, worldGDP, by="region")
+```
+```{r}
+map1<-ggplot(mapData, mapping=aes(x= long, y=lat, group=group)) + geom_polygon(aes(fill= GDP), color="black") 
+map1
+
+library(viridis)
+library(RColorBrewer)
+```
+```{r}
+map2 <- map1 + scale_fill_viridis(name="2021 Annual GDP (/billions)", option="turbo")+
+  theme(axis.text.x = element_blank(), # removes X-axis text
+        axis.text.y = element_blank(), # removes y-axis text
+        axis.ticks = element_blank(), # removes x-axis grid line
+        axis.title.y=element_blank(), # removes y-axis title
+        axis.title.x=element_blank(), # removes x-axis title
+        rect = element_blank())
+map2 
+
+```
+```{r}
+library(patchwork)
+Multi<-map1/map2
+Multi
+```
+
+

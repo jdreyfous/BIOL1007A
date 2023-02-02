@@ -2,9 +2,10 @@
 title: "Intro to Mapping with GGPLOT and Rstudio"
 author: "John Dreyfous"
 date: "1/31/2023"
-output: html_document
-editor_options: 
-  chunk_output_type: inline
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
 ---
 <style type="text/css">
   body{
@@ -12,7 +13,7 @@ editor_options:
 }
 </style>
 
-### In this tutorial, I will create a map visualizing the 2021 Annual Global GDP by Country  using `ggplot`. Maps are a powerful way to help visualize and interpret data. With a personal interst in GIS, this method of mapping seemed like an intersting alternive to learn in place of qGIS or ARC.
+**In this tutorial, I will create a map visualizing the 2021 Annual Global GDP by Country  using `ggplot`. Maps are a powerful way to help visualize and interpret data. With a personal interest in GIS, this method of mapping seemed like an interesting alternative to learn in place of qGIS or ARC.**
 
 ## Step One: Install Packages and Download Data
 
@@ -78,7 +79,7 @@ Feel free to experiment with the color spectrum that best suits your data set
 
 
 ```{r}
-map2 <- map1 + scale_fill_viridis(name="2021 Annual GDP (/billions)", option="plasma")+
+map2 <- map1 + scale_fill_viridis(name="2021 Annual GDP (/billions)", option="turbo")+
   theme(axis.text.x = element_blank(), # removes X-axis text
         axis.text.y = element_blank(), # removes y-axis text
         axis.ticks = element_blank(), # removes x-axis grid line
@@ -98,7 +99,7 @@ To view all available schemes in **RColorBrewer**: `display.brewer.all()`
 
 If you have made it this far, you have successfully replicated a map using `ggplot`.
 
-This is one of many tools available to map in Rstudio. To use Google Maps generated maps, you can use `ggmaps()`. Alternatively, maps can be downloaded for use in Rstudio from [OpenStreetMap](https://www.openstreetmap.org/#map=4/38.01/-95.84).  
+This is one of many tools available to map in Rstudio. To use Google Maps generated maps, you can use `ggmaps()` and the `Leaflet` packages. Alternatively, maps can be downloaded for use in Rstudio from [OpenStreetMap](https://www.openstreetmap.org/#map=4/38.01/-95.84).  
 
 ### Video Tutorial:
 For an in depth video tutorial of the methods described above click: [HERE](https://lvash.github.io/BIOL1007A/Final-Assignment-Guidelines.html)  
